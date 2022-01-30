@@ -31,5 +31,6 @@
       "never"
     ],
     "array-bracket-newline": ["error", "always"]
-  }
+  },
+  "ignorePatterns": []
 }
