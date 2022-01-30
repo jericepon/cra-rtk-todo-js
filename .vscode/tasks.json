@@ -1,0 +1,37 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🦄 Start",
+      "type": "npm",
+      "script": "start",
+      "group": "build",
+      "presentation": {
+        // Reveal the output only if unrecognized errors occur.
+        "reveal": "silent"
+      },
+    },
+    {
+      "label": "⚡ Build",
+      "type": "npm",
+      "script": "build",
+      "group": "build",
+      "presentation": {
+        // Reveal the output only if unrecognized errors occur.
+        "reveal": "silent"
+      },
+    },
+    {
+      "label": "🚀 Serve",
+      "type": "npm",
+      "script": "serve",
+      "group": "build",
+      "presentation": {
+        // Reveal the output only if unrecognized errors occur.
+        "reveal": "silent"
+      },
+    },
+  ]
+}
