@@ -12,8 +12,8 @@ let theme = createTheme({
 	},
 	typography: {
 		// eslint-disable-next-line quotes
-		fontFamily: "'Kurale', serif",
-	},
+		fontFamily: "'Roboto', sans-serif",
+	}
 })
 
 theme = responsiveFontSizes(theme)
