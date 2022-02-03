@@ -1,12 +1,14 @@
 import React from 'react'
-import LoadingButton from '@mui/lab/LoadingButton'
-import SaveIcon from '@mui/icons-material/Save'
+import { format } from 'date-fns'
+import { Typography } from '@mui/material'
 
 function App() {
+	const today_date = format(new Date(), '\'Today is a\' eeee')
+
 	return (
-		<LoadingButton loading loadingPosition="start" startIcon={<SaveIcon />} variant="contained" >
-			Save
-		</LoadingButton>
+		<>
+			<Typography variant="h2">{today_date}</Typography>
+		</>
 	)
 }
 
