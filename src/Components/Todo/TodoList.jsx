@@ -8,6 +8,7 @@ import Checkbox from '@mui/material/Checkbox'
 import Typography from '@mui/material/Typography'
 import theme from '../../MuiTheme'
 import { makeStyles } from '@mui/styles'
+import { red } from '@mui/material/colors'
 
 const useStyles = makeStyles({
 	ListItem: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
 			left: 0,
 			margin: 'auto',
 			width: '100%',
-			borderTop: `2px dashed ${theme.palette.grey[400]}`,
+			borderTop: `4px dashed ${red[800]}`,
 			maxWidth: '0%',
 			transition: 'all 200ms ease-out'
 		}
@@ -36,11 +37,12 @@ export default function CheckboxList() {
 	const [
 		checked, setChecked
 	] = React.useState([
-		0
+
 	])
 
 	const handleToggle = (value) => () => {
 		const currentIndex = checked.indexOf(value)
+
 		const newChecked = [
 			...checked
 		]
@@ -52,8 +54,6 @@ export default function CheckboxList() {
 		}
 
 		setChecked(newChecked)
-		console.info(checked)
-
 	}
 
 	return (
@@ -62,7 +62,6 @@ export default function CheckboxList() {
 				0, 1, 2, 3
 			].map((value, index) => {
 				const labelId = `checkbox-list-label-${value}`
-
 				return (
 					<ListItem
 						className={`${classes.ListItem} ${checked.includes(index) ? classes.selectedItem : ''}`}
