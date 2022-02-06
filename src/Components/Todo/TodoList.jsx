@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography'
 import theme from '../../MuiTheme'
 import { makeStyles } from '@mui/styles'
 import { red } from '@mui/material/colors'
+import { getAllTodos } from '../../redux/todos/TodosSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const useStyles = makeStyles({
 	ListItem: {
@@ -32,12 +34,21 @@ const useStyles = makeStyles({
 	}
 })
 
-export default function CheckboxList() {
+export default function TodoList() {
+	const { todos: { todos, status: { loading, success, failed } } } = useSelector(state => state)
+	const dispatch = useDispatch()
+	React.useEffect(() => {
+		dispatch(getAllTodos())
+		console.info(loading,
+			success,
+			failed, todos, 1)
+	}, [
+	])
+
 	const classes = useStyles()
 	const [
 		checked, setChecked
 	] = React.useState([
-
 	])
 
 	const handleToggle = (value) => () => {
@@ -58,30 +69,28 @@ export default function CheckboxList() {
 
 	return (
 		<List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-			{[
-				0, 1, 2, 3
-			].map((value, index) => {
-				const labelId = `checkbox-list-label-${value}`
+			{todos.map((todo) => {
+				const labelId = `checkbox-list-label-${todo.id}`
 				return (
 					<ListItem
-						className={`${classes.ListItem} ${checked.includes(index) ? classes.selectedItem : ''}`}
-						key={value}
+						className={`${classes.ListItem} ${checked.includes(todo.id) ? classes.selectedItem : ''}`}
+						key={todo.id}
 						secondaryAction={
 							<Typography variant="body2" color={theme.palette.grey[500]}>7:00 am</Typography>
 						}
 						disablePadding
 					>
-						<ListItemButton role={undefined} onClick={handleToggle(value)} dense>
+						<ListItemButton role={undefined} onClick={handleToggle(todo)} dense>
 							<ListItemIcon>
 								<Checkbox
 									edge="start"
-									checked={checked.indexOf(value) !== -1}
+									checked={checked.indexOf(todo.id) !== -1}
 									tabIndex={-1}
 									disableRipple
 									inputProps={{ 'aria-labelledby': labelId }}
 								/>
 							</ListItemIcon>
-							<ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+							<ListItemText id={labelId} primary={todo.title} />
 						</ListItemButton>
 					</ListItem>
 				)

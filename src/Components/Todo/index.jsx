@@ -4,7 +4,8 @@ import React from 'react'
 import TodoHeader from './TodoHeader'
 import TodoList from './TodoList'
 
-const Todo = () => {
+const Todo = ({ todos }) => {
+
 	return (
 		<Grid item xs={10} mt="9%" mx="auto">
 			<Box
@@ -18,7 +19,7 @@ const Todo = () => {
 				alignItems="start"
 			>
 				<TodoHeader />
-				<TodoList />
+				<TodoList todos={todos} />
 			</Box>
 		</Grid>
 	)
